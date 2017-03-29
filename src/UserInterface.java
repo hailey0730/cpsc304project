@@ -15,6 +15,9 @@ public class UserInterface {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1522:ug", "ora_d4c9", "a53906137");       // change username, password
+
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
