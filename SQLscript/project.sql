@@ -1,41 +1,64 @@
+drop table animal;
+drop table crop;
+drop table product;
+drop table farmland;
+drop table transaction;
+drop table farmer;
+drop table broker;
+
+
 create table farmer
-	(Famer_ID int not null,
-	Name char(45) not null,
-	primary key (Famer_ID));
- 
+	(Farmer_ID int not null PRIMARY KEY,
+	Name char(45) not null);
+
 grant select on farmer to public;
- 
-create table farmland
-	(Farm_ID int not null,
+
+
+    create table farmland (
+	Farm_ID int not null PRIMARY KEY,
 	Area_Capacity float null,
-	primary key (Farm_ID));
- 
+	Farmer_ID int not null,
+    province char(45) null,
+	foreign key (Farmer_ID) references farmer);
+
 grant select on farmland to public;
- 
+
 create table product
-	(Product_ID int not null,
+	(Product_ID int not null PRIMARY KEY,
 	Selling_Price float not null,
 	Unit char(45) null,
-	Type char(45) null,
-	primary key (Product_ID));
+	Type char(45) null);
 
 grant select on product to public;
 
 create table animal
-	(Product_ID int not null,
-	CostPerKg float not null,
-	primary key(Product_ID),
-	foreign key (Product_ID) references product);
+	(Product_ID int not null PRIMARY KEY,
+	CostPerKg float not null);
 
 grant select on animal to public;
 
 create table crop
-	(Product_ID int not null,
-	CostPerSeedPackage float not null,
-	primary key(Product_ID),
-	foreign key (Product_ID) references product);
+	(Product_ID int not null PRIMARY KEY,
+	CostPerSeedPackage float not null);
 
 grant select on crop to public;
+
+create table broker(
+broker_id int not null PRIMARY KEY,
+broker_name char(45) not null);
+
+grant select on broker to public;
+
+create table transaction(
+transaction_id int not null PRIMARY KEY,
+ trans_date date,
+ animalNumber int not null,
+ cropNumber int not null,
+ farmer_id int not null,
+ broker_id int not null,
+ foreign key (farmer_id) references farmer,
+ foreign key (broker_id) references broker);
+
 
 -- populate tables--
 
@@ -49,13 +72,13 @@ insert into farmer
 values(003, 'Paul Carter');
 
 insert into farmland
-values(101, 64.1);
+values(101, 64.1, 001,'BC');
 
 insert into farmland
-values(102, 29.8);
+values(102, 29.8, 002, 'BC');
 
 insert into farmland
-values(103, 10.9);
+values(103, 10.9, 003, 'QC');
 
 insert into product
 values(201, 12.2, 100, 'cow');

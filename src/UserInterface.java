@@ -2,6 +2,8 @@
  * Created by user on 3/24/2017.
  */
 
+import oracle.sql.CHAR;
+
 import java.lang.String;
 import java.sql.*;
 
@@ -25,7 +27,7 @@ public class UserInterface {
     public void getAllTable() {
         try {
             //String query = "select distinct farmer_id from farmland where province = 'BC'";
-            String tableListQuery = "select table_name from user_tables order by table_name";
+            String tableListQuery = "select table_name from user_tables";
             ResultSet rs = stmt.executeQuery(tableListQuery);
             while (rs.next()) {
                 String tablename = rs.getString("table_name");
@@ -46,10 +48,7 @@ public class UserInterface {
 
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(statement.toString());
-
-            //print all columns in farmers;
             printFamerCol(rs);
-
 
         }catch (SQLException e) {
             e.printStackTrace();
@@ -69,21 +68,45 @@ public class UserInterface {
             }
         }catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("ERROR!");
         }
 
     }
-    // with input province, get all farmer's name in this area
-    // or get total number of farmers in the given province
-    public void getFarmersName() {
 
+    //(1 point) Aggregation query: pick one query that requires the use of aggregation
+    // (min, max, average, or count are all fine).
+    // with input province, get total number of farmers in the given province
+    public void getNumOfFarmer(String province) {
+        try {
+            char[] ch = province.toCharArray();
+            StringBuffer statement = new StringBuffer("select count(*) from farmland where province = '");
+            for (int i = 0; i < ch.length; i++) {
+                statement.append(ch[i]);
+            }
+            statement.append("'");
+            System.out.println(statement.toString());
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(statement.toString());
+            rs.next();
+            int count = rs.getInt( 1);
+            System.out.println(count);
 
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[]args){
         UserInterface ui = new UserInterface();
-        ui.getAllColumns("farmer");
+        // test getAllColumns with farmer table
         ui.getAllTable();
+        // get all columns in table farmer
+        ui.getAllColumns("farmer");
+        // get the # of farmers in BC
+        ui.getNumOfFarmer("BC");
+
         System.out.println("hello");
+
 
     }
 }
