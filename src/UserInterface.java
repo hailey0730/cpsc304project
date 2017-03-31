@@ -176,32 +176,32 @@ public class UserInterface {
             return null;
         }
     }
-    public void importSQL(Connection conn, InputStream in) throws SQLException
-    {
-        Scanner s = new Scanner(in);
-        s.useDelimiter("(;(\r)?\n)|(--\n)");
-        Statement st = null;
-        try
-        {
-            st = stmt;
-            while (s.hasNext())
-            {
-                String line = s.next();
-                if (line.startsWith("/*!") && line.endsWith("*/"))
-                {
-                    int i = line.indexOf(' ');
-                    line = line.substring(i + 1, line.length() - " */".length());
-                }
 
-                if (line.trim().length() > 0)
-                {
-                    st.execute(line);
+    public ResultSet getMinMaxPrince(boolean checked) {
+        if (checked) {
+            try {
+                StringBuffer statement = new StringBuffer("select type, min(SELLING_PRICE) from product group by type");
+                ResultSet rs = stmt.executeQuery(statement.toString());
+                while (rs.next()) {
+                    System.out.println("The min price of " + rs.getString(1).trim() + " is " + rs.getInt(2));
                 }
+                return rs;
+            }catch (SQLException e) {
+                e.printStackTrace();
+                return  null;
             }
-        }
-        finally
-        {
-            if (st != null) st.close();
+        } else {
+            try {
+                StringBuffer statement = new StringBuffer("select type,max(SELLING_PRICE) from product group by type");
+                ResultSet rs = stmt.executeQuery(statement.toString());
+                while (rs.next()) {
+                    System.out.println("The min price of " + rs.getString(1).trim() + " is " + rs.getInt(2));
+                }
+                return rs;
+            }catch (SQLException e) {
+                e.printStackTrace();
+                return null;
+            }
         }
     }
 
@@ -221,24 +221,16 @@ public class UserInterface {
 
     public static void main(String[]args){
         UserInterface ui = new UserInterface();
-        // test getAllColumns with farmer table
-//        File file = new File("./SQLscript/project.sql");
-//        try {
-//            FileInputStream in = new FileInputStream(file);
-//            ui.importSQL(ui.con,in);
-//        } catch (FileNotFoundException a) {
-//
-//        } catch (SQLException e) {
-//
-//        }
+
         // get all columns in table farmer
-        ui.getAllColumns("farmer");
+
         // get the # of farmers in BC
         ui.getNumOfFarmer("BC");
         ui.getNamesOfFramersIn("BC");
         ui.getNamesOfFarmerOwnProduct("cow");
         ui.searchByProvince();
         ui.searchByFarmer();
+        ui.getMinMaxPrince(true);
 
     }
 }
