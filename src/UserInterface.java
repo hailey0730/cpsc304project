@@ -204,7 +204,18 @@ public class UserInterface {
             if (st != null) st.close();
         }
     }
-
+    public String farmerUISearch(String province, String productID){
+        return "results";
+    }
+    public String transactioUICreate(String province, String productID){
+        return "results";
+    }
+    public String brokerUISearch(String province, String productID, Number price, Boolean maxMin){
+        return "results";
+    }
+    public String transactionUISearch(String farmerID, String brokerID, String productID, Number productUnits){
+        return "results";
+    }
     public static void main(String[]args){
         UserInterface ui = new UserInterface();
         // test getAllColumns with farmer table
