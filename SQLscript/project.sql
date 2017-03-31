@@ -24,12 +24,16 @@ grant select on farmer to public;
 grant select on farmland to public;
 
 create table product
-	(Product_ID int not null PRIMARY KEY,
-	Selling_Price float not null,
-	Unit char(45) null,
-	Type char(45) null);
+(Product_ID int not null PRIMARY KEY,
+Selling_Price float not null,
+Unit char(45) null,
+Type char(45) null,
+quantity int not null,
+farmer_id int not null,
+ foreign key(farmer_id) references farmer);
 
-grant select on product to public;
+
+
 
 create table animal
 	(Product_ID int not null PRIMARY KEY,
@@ -56,8 +60,10 @@ transaction_id int not null PRIMARY KEY,
  cropNumber int not null,
  farmer_id int not null,
  broker_id int not null,
+ product_id int not null,
  foreign key (farmer_id) references farmer,
- foreign key (broker_id) references broker);
+ foreign key (broker_id) references broker,
+ foreign key (product_id) references product);
 
 
 -- populate tables--
@@ -80,14 +86,23 @@ values(102, 29.8, 002, 'BC');
 insert into farmland
 values(103, 10.9, 003, 'QC');
 
-insert into product
-values(201, 12.2, 100, 'cow');
+grant select on product to public;
+ insert into product
+ values(201, 12.2, 100, 'cow',1000,001);
+
+ insert into product
+ values(202, 13.1, 203, 'chicken',2000,001);
 
 insert into product
-values(202, 13.1, 203, 'chicken');
+values(203, 123.1, 465, 'corn',2000,001);
 
 insert into product
-values(203, 123.1, 465, 'corn');
+values(204, 123.1, 465, 'corn',1500,002);
+
+insert into product
+values(205, 13.1, 203, 'chicken',1400,
+003);
+
 
 insert into animal
 values(201, 9);
