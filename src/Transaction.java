@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
  */
 public class Transaction {
     private JButton searchButton;
-    private JTextArea price;
+    private JTextArea results;
     private JPanel background;
     private JTextField area;
     private JTextField product;
@@ -19,7 +19,7 @@ public class Transaction {
             @Override
             public void actionPerformed(ActionEvent e) {
                 UserInterface myInterface = new UserInterface();
-                myInterface.transactionUICreate(area.getText(), product.getText());
+                results.setText(myInterface.transactionUICreate(area.getText(), product.getText()));
                 JOptionPane.showMessageDialog(null, "And so here we would do something interesting");
             }
         });

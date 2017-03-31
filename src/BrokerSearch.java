@@ -22,8 +22,8 @@ public class BrokerSearch {
             @Override
             public void actionPerformed(ActionEvent e) {
                 UserInterface myInterface = new UserInterface();
-                Boolean maxMin = true;
-                myInterface.brokerUISearch(province.getText(), product.getText(), price.getText(), maxMin);
+                Boolean maxMin = max.isSelected();
+                results.setText(myInterface.brokerUISearch(province.getText(), product.getText(), price.getText(), maxMin));
                 JOptionPane.showMessageDialog(null, "And so here we would do something interesting");
             }
         });

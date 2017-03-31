@@ -16,13 +16,15 @@
           <text value="Create Transaction"/>
         </properties>
       </component>
-      <component id="f2bea" class="javax.swing.JTextArea" binding="price">
+      <component id="f2bea" class="javax.swing.JTextArea" binding="results">
         <constraints>
           <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="50" height="50"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <text value=""/>
+        </properties>
       </component>
       <component id="61ec4" class="javax.swing.JTextField" binding="area">
         <constraints>

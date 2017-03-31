@@ -19,8 +19,8 @@ public class TransactionSearch {
             @Override
             public void actionPerformed(ActionEvent e) {
                 UserInterface myInterface = new UserInterface();
-                myInterface.transactionUISearch(farmerID.getText(), brokerID.getText(), productID.getText(), productUnits.getText());
-                JOptionPane.showMessageDialog(null, "And so here we would do something interesting");
+                results.setText(myInterface.transactionUISearch(farmerID.getText(), brokerID.getText(), productID.getText(), productUnits.getText()));
+                JOptionPane.showMessageDialog(null, "My parameters are: " + farmerID.getText());
             }
         });
     }

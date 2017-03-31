@@ -26,7 +26,7 @@ public class FarmerSearch {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         UserInterface myInterface = new UserInterface();
-                        myInterface.farmerUISearch(province.getText(), productID.getText());
+                        results.setText(myInterface.farmerUISearch(province.getText(), productID.getText()));
                         JOptionPane.showMessageDialog(null, "And so here we would do something interesting");
                     }
                 });
