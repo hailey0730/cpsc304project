@@ -8,12 +8,10 @@ import java.awt.event.ActionListener;
 public class BrokerSearch {
     private JPanel background;
     private JButton searchButton;
-    private JComboBox area;
-    private JComboBox farmName;
-    private JComboBox animal;
-    private JComboBox grain;
-    private JComboBox price;
     private JTextArea results;
+    private JTextField province;
+    private JTextField product;
+    private JTextField price;
 
     public BrokerSearch() {
         searchButton.addActionListener(new ActionListener() {

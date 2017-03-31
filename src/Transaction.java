@@ -7,14 +7,12 @@ import java.awt.event.ActionListener;
  */
 public class Transaction {
     private JButton searchButton;
-    private JComboBox area;
-    private JComboBox farmName;
-    private JComboBox animal;
-    private JComboBox units;
-    private JComboBox grain;
-    private JComboBox kg;
     private JTextArea price;
     private JPanel background;
+    private JTextField area;
+    private JTextField product;
+    private JTextField units;
+    private JTextField farmName;
 
     public Transaction() {
         searchButton.addActionListener(new ActionListener() {

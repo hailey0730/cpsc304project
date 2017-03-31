@@ -8,11 +8,11 @@ import java.awt.event.ActionListener;
 public class TransactionSearch {
     private JPanel background;
     private JButton searchButton;
-    private JComboBox searchByDate;
-    private JComboBox searchByProduct;
-    private JComboBox searchByArea;
-    private JComboBox searchByFarmer;
     private JTextArea results;
+    private JTextField farmerID;
+    private JTextField brokerID;
+    private JTextField productID;
+    private JTextField productUnits;
 
     public TransactionSearch() {
         searchButton.addActionListener(new ActionListener() {
