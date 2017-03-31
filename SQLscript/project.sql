@@ -1,8 +1,8 @@
 drop table animal;
 drop table crop;
+drop table transaction;
 drop table product;
 drop table farmland;
-drop table transaction;
 drop table farmer;
 drop table broker;
 

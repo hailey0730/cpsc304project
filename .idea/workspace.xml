@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30fe66d9-f0cf-4072-949c-cfda5ca7e4e5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cpsc304project/UserInterface.class" afterPath="$PROJECT_DIR$/out/production/cpsc304project/UserInterface.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SQLscript/project.sql" afterPath="$PROJECT_DIR$/SQLscript/project.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UserInterface.java" afterPath="$PROJECT_DIR$/src/UserInterface.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,16 +29,18 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UserInterface.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserInterface.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/UserInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="152" column="25" lean-forward="false" selection-start-line="152" selection-start-column="25" selection-end-line="152" selection-end-column="25" />
+            <state relative-caret-position="252">
+              <caret line="200" column="40" lean-forward="true" selection-start-line="200" selection-start-column="40" selection-end-line="200" selection-end-column="40" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <marker date="1490983178000" expanded="true" signature="931:965" ph="select table... user_tables" />
-                <marker date="1490983178000" expanded="true" signature="1574:1644" ph="insert into farmer... " />
+                <marker date="1490989670000" expanded="true" signature="974:1008" ph="select table... user_tables" />
+                <marker date="1490989670000" expanded="true" signature="1617:1687" ph="insert into farmer... " />
+                <marker date="1490989670000" expanded="true" signature="6201:6259" ph="select type,... product" />
+                <marker date="1490989670000" expanded="true" signature="6755:6812" ph="select type,... product" />
               </folding>
             </state>
           </provider>
@@ -126,11 +128,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="project.sql" pinned="false" current-in-tab="true">
+      <file leaf-file-name="project.sql" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SQLscript/project.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="975">
-              <caret line="65" column="46" lean-forward="true" selection-start-line="65" selection-start-column="46" selection-end-line="65" selection-end-column="46" />
+            <state relative-caret-position="525">
+              <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -156,8 +158,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/UserInterface.java" />
         <option value="$PROJECT_DIR$/SQLscript/project.sql" />
+        <option value="$PROJECT_DIR$/src/UserInterface.java" />
       </list>
     </option>
   </component>
@@ -168,7 +170,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="424" />
+    <option name="x" value="304" />
     <option name="y" value="23" />
     <option name="width" value="1411" />
     <option name="height" value="812" />
@@ -832,7 +834,7 @@
       <workItem from="1490748006337" duration="5189000" />
       <workItem from="1490815683970" duration="682000" />
       <workItem from="1490838295616" duration="14940000" />
-      <workItem from="1490951704067" duration="8961000" />
+      <workItem from="1490951704067" duration="12066000" />
     </task>
     <task id="LOCAL-00001" summary="add some functions such as get all columns in a given table, get all tables in the database">
       <created>1490853332096</created>
@@ -876,14 +878,21 @@
       <option name="project" value="LOCAL" />
       <updated>1490983189952</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="revise project.sql">
+      <created>1490985134312</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1490985134312</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34057000" />
+    <option name="totallyTimeSpent" value="37162000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="424" y="23" width="1411" height="812" extended-state="0" />
+    <frame x="304" y="23" width="1411" height="812" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -895,7 +904,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26359832" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37238494" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24407253" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2973806" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -930,7 +939,8 @@
     <MESSAGE value="add getAllProvince();" />
     <MESSAGE value="change name to searchByProvince" />
     <MESSAGE value="add return statement" />
-    <option name="LAST_COMMIT_MESSAGE" value="add return statement" />
+    <MESSAGE value="revise project.sql" />
+    <option name="LAST_COMMIT_MESSAGE" value="revise project.sql" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -950,8 +960,10 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <marker date="1490983178000" expanded="true" signature="931:965" ph="select table... user_tables" />
-            <marker date="1490983178000" expanded="true" signature="1574:1644" ph="insert into farmer... " />
+            <marker date="1490989670000" expanded="true" signature="974:1008" ph="select table... user_tables" />
+            <marker date="1490989670000" expanded="true" signature="1617:1687" ph="insert into farmer... " />
+            <marker date="1490989670000" expanded="true" signature="6201:6259" ph="select type,... product" />
+            <marker date="1490989670000" expanded="true" signature="6755:6812" ph="select type,... product" />
           </folding>
         </state>
       </provider>
@@ -1027,8 +1039,10 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <marker date="1490983178000" expanded="true" signature="931:965" ph="select table... user_tables" />
-            <marker date="1490983178000" expanded="true" signature="1574:1644" ph="insert into farmer... " />
+            <marker date="1490989670000" expanded="true" signature="974:1008" ph="select table... user_tables" />
+            <marker date="1490989670000" expanded="true" signature="1617:1687" ph="insert into farmer... " />
+            <marker date="1490989670000" expanded="true" signature="6201:6259" ph="select type,... product" />
+            <marker date="1490989670000" expanded="true" signature="6755:6812" ph="select type,... product" />
           </folding>
         </state>
       </provider>
@@ -1040,8 +1054,10 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <marker date="1490983178000" expanded="true" signature="931:965" ph="select table... user_tables" />
-            <marker date="1490983178000" expanded="true" signature="1574:1644" ph="insert into farmer... " />
+            <marker date="1490989670000" expanded="true" signature="974:1008" ph="select table... user_tables" />
+            <marker date="1490989670000" expanded="true" signature="1617:1687" ph="insert into farmer... " />
+            <marker date="1490989670000" expanded="true" signature="6201:6259" ph="select type,... product" />
+            <marker date="1490989670000" expanded="true" signature="6755:6812" ph="select type,... product" />
           </folding>
         </state>
       </provider>
@@ -1053,8 +1069,10 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <marker date="1490983178000" expanded="true" signature="931:965" ph="select table... user_tables" />
-            <marker date="1490983178000" expanded="true" signature="1574:1644" ph="insert into farmer... " />
+            <marker date="1490989670000" expanded="true" signature="974:1008" ph="select table... user_tables" />
+            <marker date="1490989670000" expanded="true" signature="1617:1687" ph="insert into farmer... " />
+            <marker date="1490989670000" expanded="true" signature="6201:6259" ph="select type,... product" />
+            <marker date="1490989670000" expanded="true" signature="6755:6812" ph="select type,... product" />
           </folding>
         </state>
       </provider>
@@ -1066,8 +1084,10 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <marker date="1490983178000" expanded="true" signature="931:965" ph="select table... user_tables" />
-            <marker date="1490983178000" expanded="true" signature="1574:1644" ph="insert into farmer... " />
+            <marker date="1490989670000" expanded="true" signature="974:1008" ph="select table... user_tables" />
+            <marker date="1490989670000" expanded="true" signature="1617:1687" ph="insert into farmer... " />
+            <marker date="1490989670000" expanded="true" signature="6201:6259" ph="select type,... product" />
+            <marker date="1490989670000" expanded="true" signature="6755:6812" ph="select type,... product" />
           </folding>
         </state>
       </provider>
@@ -1079,8 +1099,10 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <marker date="1490983178000" expanded="true" signature="931:965" ph="select table... user_tables" />
-            <marker date="1490983178000" expanded="true" signature="1574:1644" ph="insert into farmer... " />
+            <marker date="1490989670000" expanded="true" signature="974:1008" ph="select table... user_tables" />
+            <marker date="1490989670000" expanded="true" signature="1617:1687" ph="insert into farmer... " />
+            <marker date="1490989670000" expanded="true" signature="6201:6259" ph="select type,... product" />
+            <marker date="1490989670000" expanded="true" signature="6755:6812" ph="select type,... product" />
           </folding>
         </state>
       </provider>
@@ -1092,8 +1114,10 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <marker date="1490983178000" expanded="true" signature="931:965" ph="select table... user_tables" />
-            <marker date="1490983178000" expanded="true" signature="1574:1644" ph="insert into farmer... " />
+            <marker date="1490989670000" expanded="true" signature="974:1008" ph="select table... user_tables" />
+            <marker date="1490989670000" expanded="true" signature="1617:1687" ph="insert into farmer... " />
+            <marker date="1490989670000" expanded="true" signature="6201:6259" ph="select type,... product" />
+            <marker date="1490989670000" expanded="true" signature="6755:6812" ph="select type,... product" />
           </folding>
         </state>
       </provider>
@@ -1105,8 +1129,10 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <marker date="1490983178000" expanded="true" signature="931:965" ph="select table... user_tables" />
-            <marker date="1490983178000" expanded="true" signature="1574:1644" ph="insert into farmer... " />
+            <marker date="1490989670000" expanded="true" signature="974:1008" ph="select table... user_tables" />
+            <marker date="1490989670000" expanded="true" signature="1617:1687" ph="insert into farmer... " />
+            <marker date="1490989670000" expanded="true" signature="6201:6259" ph="select type,... product" />
+            <marker date="1490989670000" expanded="true" signature="6755:6812" ph="select type,... product" />
           </folding>
         </state>
       </provider>
@@ -1186,24 +1212,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/UserInterface.java">
+    <entry file="file://$PROJECT_DIR$/SQLscript/project.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="152" column="25" lean-forward="false" selection-start-line="152" selection-start-column="25" selection-end-line="152" selection-end-column="25" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <marker date="1490983178000" expanded="true" signature="931:965" ph="select table... user_tables" />
-            <marker date="1490983178000" expanded="true" signature="1574:1644" ph="insert into farmer... " />
-          </folding>
+        <state relative-caret-position="525">
+          <caret line="35" column="0" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SQLscript/project.sql">
+    <entry file="file://$PROJECT_DIR$/src/UserInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="65" column="46" lean-forward="true" selection-start-line="65" selection-start-column="46" selection-end-line="65" selection-end-column="46" />
-          <folding />
+        <state relative-caret-position="252">
+          <caret line="200" column="40" lean-forward="true" selection-start-line="200" selection-start-column="40" selection-end-line="200" selection-end-column="40" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <marker date="1490989670000" expanded="true" signature="974:1008" ph="select table... user_tables" />
+            <marker date="1490989670000" expanded="true" signature="1617:1687" ph="insert into farmer... " />
+            <marker date="1490989670000" expanded="true" signature="6201:6259" ph="select type,... product" />
+            <marker date="1490989670000" expanded="true" signature="6755:6812" ph="select type,... product" />
+          </folding>
         </state>
       </provider>
     </entry>
