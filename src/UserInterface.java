@@ -4,8 +4,10 @@
 
 import oracle.sql.CHAR;
 
+import java.io.*;
 import java.lang.String;
 import java.sql.*;
+import java.util.Scanner;
 
 public class UserInterface {
     private Connection con = null;
@@ -47,15 +49,18 @@ public class UserInterface {
             statement.append(tableName);
 
             Statement stmt = con.createStatement();
+
+//            stmt.executeQuery("insert into farmer\n" +
+//                    "values(001, 'Ed Knorr')");
             ResultSet rs = stmt.executeQuery(statement.toString());
-            printFamerCol(rs);
+            printFarmerCol(rs);
 
         }catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void printFamerCol(ResultSet rs) {
+    public void printFarmerCol(ResultSet rs) {
         try {
             int farmerID;
             String farmerName;
@@ -89,23 +94,105 @@ public class UserInterface {
             ResultSet rs = stmt.executeQuery(statement.toString());
             rs.next();
             int count = rs.getInt( 1);
-            System.out.println(count);
+            //System.out.println("There are " + count + " farmers in " + province);
 
         }catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
+    public void getNamesOfFramersIn(String province) {
+        try {
+            char[] ch = province.toCharArray();
+            StringBuffer statement = new StringBuffer("select farmer.name from farmland, farmer where farmer.farmer_id = farmland.farmer_id and province = '");
+            for (int i = 0; i < ch.length; i++) {
+                statement.append(ch[i]);
+            }
+            statement.append("'");
+            System.out.println(statement.toString());
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(statement.toString());
+            while (rs.next()){
+                String name = rs.getString( 1);
+                System.out.println(name);
+            }
+
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void getNamesOfFarmerOwnProduct(String productName) {
+        try {
+            char[] ch = productName.toCharArray();
+            StringBuffer statement = new StringBuffer("select name from farmer where exists(select * from product where type = 'chicken' and farmer.farmer_id = product.farmer_id)");
+//            for (int i = 0; i < ch.length; i++) {
+//                statement.append(ch[i]);
+//            }
+//            statement.append("'");
+            System.out.println(statement.toString());
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(statement.toString());
+            while (rs.next()){
+                String name = rs.getString( 1);
+                System.out.println(name);
+            }
+
+
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void importSQL(Connection conn, InputStream in) throws SQLException
+    {
+        Scanner s = new Scanner(in);
+        s.useDelimiter("(;(\r)?\n)|(--\n)");
+        Statement st = null;
+        try
+        {
+            st = stmt;
+            while (s.hasNext())
+            {
+                String line = s.next();
+                if (line.startsWith("/*!") && line.endsWith("*/"))
+                {
+                    int i = line.indexOf(' ');
+                    line = line.substring(i + 1, line.length() - " */".length());
+                }
+
+                if (line.trim().length() > 0)
+                {
+                    st.execute(line);
+                }
+            }
+        }
+        finally
+        {
+            if (st != null) st.close();
+        }
+    }
+
     public static void main(String[]args){
         UserInterface ui = new UserInterface();
         // test getAllColumns with farmer table
+//        File file = new File("./SQLscript/project.sql");
+//        try {
+//            FileInputStream in = new FileInputStream(file);
+//            ui.importSQL(ui.con,in);
+//        } catch (FileNotFoundException a) {
+//
+//        } catch (SQLException e) {
+//
+//        }
         ui.getAllTable();
         // get all columns in table farmer
         ui.getAllColumns("farmer");
         // get the # of farmers in BC
         ui.getNumOfFarmer("BC");
-
-        System.out.println("hello");
+        ui.getNamesOfFramersIn("BC");
+        ui.getNamesOfFarmerOwnProduct("cow");
 
 
     }
