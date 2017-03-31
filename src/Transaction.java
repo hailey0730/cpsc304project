@@ -18,6 +18,8 @@ public class Transaction {
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                UserInterface myInterface = new UserInterface();
+                myInterface.transactionUICreate(area.getText(), product.getText());
                 JOptionPane.showMessageDialog(null, "And so here we would do something interesting");
             }
         });

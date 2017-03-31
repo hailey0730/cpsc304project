@@ -207,7 +207,7 @@ public class UserInterface {
     public String farmerUISearch(String province, String productID){
         return "results";
     }
-    public String transactioUICreate(String province, String productID){
+    public String transactionUICreate(String province, String productID){
         return "results";
     }
     public String brokerUISearch(String province, String productID, String price, Boolean maxMin){
