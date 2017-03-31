@@ -1,3 +1,5 @@
+import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,11 +14,16 @@ public class BrokerSearch {
     private JTextField province;
     private JTextField product;
     private JTextField price;
+    private JRadioButton max;
+    private JRadioButton min;
 
     public BrokerSearch() {
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                UserInterface myInterface = new UserInterface();
+                Boolean maxMin = true;
+                myInterface.brokerUISearch(province.getText(), product.getText(), price.getText(), maxMin);
                 JOptionPane.showMessageDialog(null, "And so here we would do something interesting");
             }
         });

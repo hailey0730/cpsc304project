@@ -210,10 +210,10 @@ public class UserInterface {
     public String transactioUICreate(String province, String productID){
         return "results";
     }
-    public String brokerUISearch(String province, String productID, Number price, Boolean maxMin){
+    public String brokerUISearch(String province, String productID, String price, Boolean maxMin){
         return "results";
     }
-    public String transactionUISearch(String farmerID, String brokerID, String productID, Number productUnits){
+    public String transactionUISearch(String farmerID, String brokerID, String productID, String productUnits){
         return "results";
     }
     public static void main(String[]args){

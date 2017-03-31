@@ -13,8 +13,7 @@ public class FarmerSearch {
     private JButton searchButton;
     private JPanel background;
     private JTextField province;
-    private JTextField animalType;
-    private JTextField grainType;
+    private JTextField productID;
     private JTextArea results;
 
     private Connection con = null;
@@ -26,24 +25,13 @@ public class FarmerSearch {
                 searchButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
+                        UserInterface myInterface = new UserInterface();
+                        myInterface.farmerUISearch(province.getText(), productID.getText());
                         JOptionPane.showMessageDialog(null, "And so here we would do something interesting");
                     }
                 });
             }
         });
-    }
-    public void searchByProvince() {
-        try {
-            Statement stmt = con.createStatement();
-            StringBuffer statement = new StringBuffer("select distinct province from farmland");
-            ResultSet rs = stmt.executeQuery(statement.toString());
-            while (rs.next()) {
-                System.out.println(rs.getString(1));
-            }
-
-        }catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
     public static void main(String[] args) {
         JFrame frame = new JFrame("FarmerSearch");
