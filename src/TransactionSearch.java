@@ -20,8 +20,7 @@ public class TransactionSearch {
             public void actionPerformed(ActionEvent e) {
                 UserInterface myInterface = new UserInterface();
                 results.setText(myInterface.transactionUISearch(farmerID.getText(), brokerID.getText(), productID.getText(), productUnits.getText()));
-                JOptionPane.showMessageDialog(null, "My parameters are: " + farmerID.getText());
-            }
+           }
         });
     }
 

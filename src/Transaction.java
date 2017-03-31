@@ -19,8 +19,7 @@ public class Transaction {
             @Override
             public void actionPerformed(ActionEvent e) {
                 UserInterface myInterface = new UserInterface();
-                results.setText(myInterface.transactionUICreate(area.getText(), product.getText()));
-                JOptionPane.showMessageDialog(null, "And so here we would do something interesting");
+                results.setText(myInterface.transactionUICreate(area.getText(), farmName.getText(), product.getText(), units.getText()));
             }
         });
     }

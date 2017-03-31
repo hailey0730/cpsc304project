@@ -19,17 +19,12 @@ public class FarmerSearch {
     private Connection con = null;
 
     public FarmerSearch() {
+
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                searchButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        UserInterface myInterface = new UserInterface();
-                        results.setText(myInterface.farmerUISearch(province.getText(), productID.getText()));
-                        JOptionPane.showMessageDialog(null, "And so here we would do something interesting");
-                    }
-                });
+                UserInterface myInterface = new UserInterface();
+                results.setText(myInterface.farmerUISearch(province.getText(), productID.getText()));
             }
         });
     }

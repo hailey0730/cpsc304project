@@ -204,18 +204,21 @@ public class UserInterface {
             if (st != null) st.close();
         }
     }
+
     public String farmerUISearch(String province, String productID){
-        return "results here thanks";
+        return "results here thanks: " + province + "  " + productID;
     }
-    public String brokerUISearch(String province, String product, String price, Boolean maxMin){
-        return "results here thanks";
+    public String brokerUISearch(String province, String productID, String price, Boolean max){
+        //max is the result of max... if it is selected it maxMin is true, else it is false
+        return "results here thanks: " + province + "  " + productID + " " + price + " " + max;
     }
-    public String transactionUICreate(String area, String product){
-        return "results here thanks";
+    public String transactionUICreate(String area, String farmName, String productID, String productUnits){
+        return "results here thanks: " + area + "  " + farmName + "  " + productID + " " + productUnits;
     }
     public String transactionUISearch(String farmerID, String brokerID, String productID, String productUnits){
-        return "results here thanks";
+        return "results here thanks: " + farmerID + "  " + brokerID + " " + productID + " " + productUnits;
     }
+
     public static void main(String[]args){
         UserInterface ui = new UserInterface();
         // test getAllColumns with farmer table
