@@ -145,7 +145,7 @@ public class UserInterface {
             e.printStackTrace();
         }
     }
-    public void getALlProvince() {
+    public void searchByProvince() {
         try {
             Statement stmt = con.createStatement();
             StringBuffer statement = new StringBuffer("select distinct province from farmland");
@@ -199,14 +199,13 @@ public class UserInterface {
 //        } catch (SQLException e) {
 //
 //        }
-        ui.getAllTable();
         // get all columns in table farmer
         ui.getAllColumns("farmer");
         // get the # of farmers in BC
         ui.getNumOfFarmer("BC");
         ui.getNamesOfFramersIn("BC");
         ui.getNamesOfFarmerOwnProduct("cow");
-        ui.getALlProvince();
+        ui.searchByProvince();
 
     }
 }
