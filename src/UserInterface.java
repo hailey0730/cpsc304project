@@ -145,6 +145,19 @@ public class UserInterface {
             e.printStackTrace();
         }
     }
+    public void getALlProvince() {
+        try {
+            Statement stmt = con.createStatement();
+            StringBuffer statement = new StringBuffer("select distinct province from farmland");
+            ResultSet rs = stmt.executeQuery(statement.toString());
+            while (rs.next()) {
+                System.out.println(rs.getString(1));
+            }
+
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public void importSQL(Connection conn, InputStream in) throws SQLException
     {
         Scanner s = new Scanner(in);
@@ -193,7 +206,7 @@ public class UserInterface {
         ui.getNumOfFarmer("BC");
         ui.getNamesOfFramersIn("BC");
         ui.getNamesOfFarmerOwnProduct("cow");
-
+        ui.getALlProvince();
 
     }
 }
