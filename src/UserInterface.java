@@ -145,7 +145,7 @@ public class UserInterface {
             e.printStackTrace();
         }
     }
-    public void searchByProvince() {
+    public ResultSet searchByProvince() {
         try {
             Statement stmt = con.createStatement();
             StringBuffer statement = new StringBuffer("select distinct province from farmland");
@@ -153,9 +153,27 @@ public class UserInterface {
             while (rs.next()) {
                 System.out.println(rs.getString(1));
             }
+            return rs;
+        }catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+    public ResultSet searchByFarmer() {
+        try {
+            Statement stmt = con.createStatement();
+            StringBuffer statement = new StringBuffer("select name from farmer");
+            ResultSet rs = stmt.executeQuery(statement.toString());
+            while (rs.next()) {
+                System.out.println(rs.getString(1));
+            }
+            return rs;
 
         }catch (SQLException e) {
             e.printStackTrace();
+            return null;
         }
     }
     public void importSQL(Connection conn, InputStream in) throws SQLException
@@ -206,6 +224,7 @@ public class UserInterface {
         ui.getNamesOfFramersIn("BC");
         ui.getNamesOfFarmerOwnProduct("cow");
         ui.searchByProvince();
+        ui.searchByFarmer();
 
     }
 }
