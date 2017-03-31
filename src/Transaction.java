@@ -7,19 +7,19 @@ import java.awt.event.ActionListener;
  */
 public class Transaction {
     private JButton searchButton;
-    private JComboBox area;
-    private JComboBox farmName;
-    private JComboBox animal;
-    private JComboBox units;
-    private JComboBox grain;
-    private JComboBox kg;
     private JTextArea price;
     private JPanel background;
+    private JTextField area;
+    private JTextField product;
+    private JTextField units;
+    private JTextField farmName;
 
     public Transaction() {
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                UserInterface myInterface = new UserInterface();
+                myInterface.transactionUICreate(area.getText(), product.getText());
                 JOptionPane.showMessageDialog(null, "And so here we would do something interesting");
             }
         });
