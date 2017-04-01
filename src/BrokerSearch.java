@@ -13,7 +13,7 @@ public class BrokerSearch {
     private JTextArea results;
     private JTextField province;
     private JTextField product;
-    private JTextField price;
+    //private JTextField price;
     private JRadioButton max;
     private JRadioButton min;
 
@@ -22,8 +22,9 @@ public class BrokerSearch {
             @Override
             public void actionPerformed(ActionEvent e) {
                 UserInterface myInterface = new UserInterface();
-                Boolean maxMin = max.isSelected();
-                results.setText(myInterface.brokerUISearch(province.getText(), product.getText(), price.getText(), maxMin));
+                Boolean checkMax = max.isSelected();
+                Boolean checkMin = min.isSelected();
+                results.setText(myInterface.brokerUISearch(province.getText(), product.getText(), checkMax, checkMin));
 
             }
         });

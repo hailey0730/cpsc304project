@@ -91,9 +91,15 @@ public class UserInterface {
             ResultSet rs = stmt.executeQuery(statement.toString());
             rs.next();
             int count = rs.getInt( 1);
+            String print = "";
+            if (count == 0) {
+                print = "There is no farmers in " + province + ".";
+            }else {
+                 print = "There are " + count + " farmers in " + province + ".";
+            }
             //System.out.println("There are " + count + " farmers in " + province);
-            String number = "There are " + count + " farmers in " + province + ".";
-            return number;
+
+            return print;
         }catch (SQLException e) {
             e.printStackTrace();
             return ("Error:" + e);
@@ -178,11 +184,16 @@ public class UserInterface {
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(statement.toString());
             String print="";
-            while (rs.next()) {
-                String name = rs.getString(1).trim();
-                int count = rs.getInt( 2);
-                print += "Farmer " + name + " in " + province + " owns " + count + " " + product + "s." + '\n';
+            if (!rs.next()) {
+                print = "There is no " + product + " in " + province + ".";
+            } else {
+                while (rs.next()) {
+                    String name = rs.getString(1).trim();
+                    int count = rs.getInt( 2);
+                    print += "Farmer " + name + " in " + province + " owns " + count + " " + product + "s." + '\n';
+                }
             }
+
 
             //System.out.println("There are " + count + " farmers in " + province);
             return print;
@@ -192,30 +203,33 @@ public class UserInterface {
         }
     }
 
-    public ResultSet getMinMaxPrince(boolean checked) {
+    public String getMinMaxPrince(boolean checked) {
         if (checked) {
             try {
                 StringBuffer statement = new StringBuffer("select type, min(SELLING_PRICE) from product group by type");
                 ResultSet rs = stmt.executeQuery(statement.toString());
+                String print="";
                 while (rs.next()) {
-                    System.out.println("The min price of " + rs.getString(1).trim() + " is " + rs.getInt(2));
+                    print += "The min price of " + rs.getString(1).trim() + " is " + rs.getInt(2)+ '\n';
                 }
-                return rs;
+                return print;
             }catch (SQLException e) {
                 e.printStackTrace();
-                return  null;
+                return  "Error:" + e;
             }
         } else {
             try {
                 StringBuffer statement = new StringBuffer("select type,max(SELLING_PRICE) from product group by type");
                 ResultSet rs = stmt.executeQuery(statement.toString());
+                String print="";
+
                 while (rs.next()) {
-                    System.out.println("The min price of " + rs.getString(1).trim() + " is " + rs.getInt(2));
+                    print += "The max price of " + rs.getString(1).trim() + " is " + rs.getInt(2) + '\n';
                 }
-                return rs;
+                return print;
             }catch (SQLException e) {
                 e.printStackTrace();
-                return null;
+                return  "Error:" + e;
             }
         }
     }
@@ -229,15 +243,21 @@ public class UserInterface {
             statement.append("'");
             System.out.println(statement.toString());
             ResultSet rs = stmt.executeQuery(statement.toString());
-            String print = "Type Product ID  Price Amount FarmerId" + '\n';
-            while (rs.next()){
-                int id= rs.getInt( 1);
-                float price = rs.getFloat(2);
-                int amount = rs.getInt(5);
-                int fid = rs.getInt(6);
+            String print = "";
+            if (!rs.next()) {
+                print = "There is no product " + product + " in the database.";
+            } else {
+                print = "Type Product ID  Price Amount FarmerId" + '\n';
+                while (rs.next()){
+                    int id= rs.getInt( 1);
+                    float price = rs.getFloat(2);
+                    int amount = rs.getInt(5);
+                    int fid = rs.getInt(6);
 
-                print += product + "     " +id + "      " + price + "   " + amount + "     " + fid + '\n';
+                    print += product + "     " +id + "      " + price + "   " + amount + "     " + fid + '\n';
+                }
             }
+
             return print;
         }catch (SQLException e) {
             String print = "Error "+ e;
@@ -258,9 +278,26 @@ public class UserInterface {
         }
 
     }
-    public String brokerUISearch(String province, String productID, String price, Boolean max){
+    public String brokerUISearch(String province, String product,  boolean max, boolean min){
         //max is the result of max... if it is selected it maxMin is true, else it is false
-        return "results here thanks: " + province + "  " + productID + " " + price + " " + max;
+        if (max && !min) {
+            return this.getMinMaxPrince(false);
+        } else if(!max && min) {
+            return this.getMinMaxPrince(true);
+        } else if (!max && !min) {
+            if (province.isEmpty() && product.isEmpty()) {
+                return "Error: Empty Input!";
+            } else if ((!province.isEmpty()) && product.isEmpty()){
+                return this.getNumOfFarmer(province) + '\n' + this.getNamesOfFramersIn(province);
+            } else if (province.isEmpty() && (!product.isEmpty())) {
+                return this.getProduct(product);
+            } else{
+                return this.getNamesWith(province,product);
+            }
+        } else {
+            return "Error: Don't check both!";
+        }
+
     }
     public String transactionUICreate(String area, String farmName, String productID, String productUnits){
         return "results here thanks: " + area + "  " + farmName + "  " + productID + " " + productUnits;
@@ -272,15 +309,11 @@ public class UserInterface {
     public static void main(String[]args){
         UserInterface ui = new UserInterface();
 
-        // get the # of farmers in BC
         System.out.println(ui.getNumOfFarmer("BC"));
         System.out.println(ui.getNamesOfFramersIn("BC"));
         System.out.println(ui.getNamesWith("BC","corn"));
         System.out.println(ui.getProduct("cow"));
-        ui.getNamesOfFarmerOwnProduct("cow");
-        ui.searchByFarmer();
-        ui.getMinMaxPrince(true);
-
+        System.out.println(ui.getMinMaxPrince(false));
 
     }
 }

@@ -88,19 +88,19 @@ values(103, 10.9, 003, 'QC');
 
 grant select on product to public;
  insert into product
- values(201, 12.2, 100, 'cow',1000,001);
+ values(201, 12.2, 'kg', 'cow',1000,001);
 
  insert into product
- values(202, 13.1, 203, 'chicken',2000,001);
+ values(202, 13.1, 'kg', 'chicken',2000,001);
 
 insert into product
-values(203, 123.1, 465, 'corn',2000,001);
+values(203, 123.1, 'kg', 'corn',2000,001);
 
 insert into product
-values(204, 123.1, 465, 'corn',1500,002);
+values(204, 123.1, 'kg', 'corn',1500,002);
 
 insert into product
-values(205, 13.1, 203, 'chicken',1400,
+values(205, 13.1, 'kg', 'chicken',1400,
 003);
 
 
