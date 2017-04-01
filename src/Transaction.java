@@ -9,17 +9,17 @@ public class Transaction {
     private JButton searchButton;
     private JTextArea results;
     private JPanel background;
-    private JTextField area;
+    private JTextField broker;
     private JTextField product;
     private JTextField units;
-    private JTextField farmName;
+    private JTextField farmer;
 
     public Transaction() {
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 UserInterface myInterface = new UserInterface();
-                results.setText(myInterface.transactionUICreate(area.getText(), farmName.getText(), product.getText(), units.getText()));
+                results.setText(myInterface.transactionUICreate(farmer.getText(), broker.getText(), product.getText(), units.getText()));
             }
         });
     }

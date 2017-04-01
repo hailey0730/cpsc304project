@@ -4,10 +4,12 @@
 
 import oracle.sql.CHAR;
 
+import javax.swing.plaf.nimbus.State;
 import java.io.*;
 import java.lang.String;
 import java.sql.*;
 import java.util.Scanner;
+import java.time.LocalDate;
 
 public class UserInterface {
     private Connection con = null;
@@ -265,6 +267,176 @@ public class UserInterface {
         }
     }
 
+    public  String deleteProduct(String product_ID){
+
+        try {
+            StringBuffer statement = new StringBuffer("delete from product where product_id = ");
+            statement.append(product_ID);
+            Statement stmt = con.createStatement();
+            int rs = stmt.executeUpdate(statement.toString());
+
+            if(rs ==1){
+                return "product is deleted";
+            } else {
+                return "";
+            }
+
+        } catch (SQLException e){
+            e.printStackTrace();
+            return "Error: " + e;
+
+        }
+
+    }
+
+    public int getProductCount(){
+        try {
+            StringBuffer statement = new StringBuffer("select count(product_id)from product");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(statement.toString());
+            rs.next();
+
+            int count = rs.getInt(1);
+            return count;
+
+        } catch (SQLException e){
+            e.printStackTrace();
+            return 0;
+
+        }
+    }
+
+    public ResultSet getProductInfo(int productID) {
+        try {
+            String statement = new String("select quantity from product where product_id = " + productID);
+            Statement stmt = con.createStatement();
+            //String state = "select * from product";
+            ResultSet rs = stmt.executeQuery(statement);
+            rs.next();
+            return rs;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public ResultSet updateProductAmount(int productID, int amount) {
+
+            try {
+                ResultSet productInfo = this.getProductInfo(productID);
+
+                int newAmount = productInfo.getInt(1) + amount;
+                StringBuffer statement = new StringBuffer("UPDATE product set quantity = ");
+                statement.append(newAmount);
+                statement.append("where product_id = " + productID);
+                Statement stmt = con.createStatement();
+                stmt.executeUpdate(statement.toString());
+                ResultSet rs = this.getProductInfo(productID);
+                rs.next();
+                return rs;
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return null;
+            }
+
+    }
+
+    public String getProductTypeAnimal(int product_id){
+        try {
+
+            StringBuffer statement = new StringBuffer("select * from animal where product_id = ");
+            statement.append(product_id);
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(statement.toString());
+            rs.next();
+            return "animal";
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return "Error!";
+        }
+    }
+
+    public int getProductID(String farmerID, String productName){
+        try {
+
+            StringBuffer statement = new StringBuffer("select from product where farmer_id = ");
+            statement.append(farmerID);
+            statement.append("and type = ' ");
+            statement.append(productName);
+            statement.append("'");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(statement.toString());
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public String createTransaction(String farmerID, String brokerID, String productName, String units){
+
+        try{
+            //INSERT INTO table_name
+            //VALUES (value1, value2, value3, ...);
+            //transaction_id int not null PRIMARY KEY,
+            //trans_date date,
+            //animalNumber int not null,
+            //cropNumber int not null,
+            //farmer_id int not null,
+            //broker_id int not null,
+            //product_id int not null,
+
+            int product_id = this.getProductID(farmerID, productName);
+            String type = this.getProductTypeAnimal(product_id);
+            String finalType;
+            if(type == "Error!"){
+                finalType = "crop";
+            } else {
+                finalType = "animal";
+            }
+            StringBuffer statement = new StringBuffer("insert into transaction values (");
+            //statement.append();
+            statement.append(",");
+            LocalDate localDate = LocalDate.now();
+            statement.append(localDate);
+            statement.append(",");
+            if(finalType == "animal"){
+                statement.append(units);
+                statement.append(", 0 ,");
+                statement.append(farmerID);
+                statement.append(",");
+                statement.append(brokerID);
+                statement.append(",");
+                statement.append(product_id);
+                statement.append(")");
+                Statement stmt = con.createStatement();
+                stmt.executeUpdate(statement.toString());
+
+
+            } else {
+                statement.append(", 0 ,");
+                statement.append(units);
+                statement.append(",");
+                statement.append(farmerID);
+                statement.append(",");
+                statement.append(brokerID);
+                statement.append(",");
+                statement.append(product_id);
+                statement.append(")");
+                Statement stmt = con.createStatement();
+                stmt.executeUpdate(statement.toString());
+            }
+            this.updateProductAmount(product_id, Integer.parseInt(units));
+
+            return "Transaction has been added.";
+        } catch (SQLException e){
+            e.printStackTrace();
+            return "Error: " + e;
+        }
+    }
+
 
     public String farmerUISearch(String province, String product){
         if (province.isEmpty() && product.isEmpty()) {
@@ -299,11 +471,33 @@ public class UserInterface {
         }
 
     }
-    public String transactionUICreate(String area, String farmName, String productID, String productUnits){
-        return "results here thanks: " + area + "  " + farmName + "  " + productID + " " + productUnits;
+    public String transactionUICreate(String farmer_id, String broker_id, String productName, String productUnits){
+
+        if(broker_id.isEmpty() || productName.isEmpty()|| farmer_id.isEmpty()|| productUnits.isEmpty()){
+            return  "Please input a value in every field";
+        }  else {
+            try{
+                Integer.parseInt(productUnits);
+            } catch (NumberFormatException n){
+                return "Please enter a numerical value for productUnits";
+            }
+            return this.createTransaction(farmer_id, broker_id, productName, productUnits);
+        }
     }
+
     public String transactionUISearch(String farmerID, String productID){
-        return "results here thanks: " + farmerID + "  " + " " + productID ;
+        if(farmerID.isEmpty() || productID.isEmpty()){
+            return  "Please input both farmer_id and product_id";
+        } else {
+            int before = this.getProductCount();
+            String result = this.deleteProduct(productID);
+            int after = this.getProductCount();
+            if(result.isEmpty()){
+                return "No record has been found";
+            } else {
+                return result + "Before deletion there were " + before + " products. Now there are " + after + "products.";
+            }
+        }
     }
 
     public static void main(String[]args){
