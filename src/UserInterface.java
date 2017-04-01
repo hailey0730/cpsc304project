@@ -309,8 +309,8 @@ public class UserInterface {
     public static void main(String[]args){
         UserInterface ui = new UserInterface();
 
-        System.out.println(ui.getNumOfFarmer("BC"));
-        System.out.println(ui.getNamesOfFramersIn("BC"));
+        System.out.println(ui.getNumOfFarmer("AB"));
+        System.out.println(ui.getNamesOfFramersIn("AB"));
         System.out.println(ui.getNamesWith("BC","corn"));
         System.out.println(ui.getProduct("cow"));
         System.out.println(ui.getMinMaxPrince(false));

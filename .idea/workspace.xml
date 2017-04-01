@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30fe66d9-f0cf-4072-949c-cfda5ca7e4e5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cpsc304project/BrokerSearch$1.class" afterPath="$PROJECT_DIR$/out/production/cpsc304project/BrokerSearch$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cpsc304project/BrokerSearch.class" afterPath="$PROJECT_DIR$/out/production/cpsc304project/BrokerSearch.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cpsc304project/FarmerSearch.class" afterPath="$PROJECT_DIR$/out/production/cpsc304project/FarmerSearch.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/cpsc304project/UserInterface.class" afterPath="$PROJECT_DIR$/out/production/cpsc304project/UserInterface.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SQLscript/project.sql" afterPath="$PROJECT_DIR$/SQLscript/project.sql" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BrokerSearch.form" afterPath="$PROJECT_DIR$/src/BrokerSearch.form" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BrokerSearch.java" afterPath="$PROJECT_DIR$/src/BrokerSearch.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FarmerSearch.form" afterPath="$PROJECT_DIR$/src/FarmerSearch.form" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/UserInterface.java" afterPath="$PROJECT_DIR$/src/UserInterface.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -35,12 +36,12 @@
       <file leaf-file-name="UserInterface.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/UserInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2895">
-              <caret line="193" column="17" lean-forward="false" selection-start-line="193" selection-start-column="17" selection-end-line="193" selection-end-column="17" />
+            <state relative-caret-position="177">
+              <caret line="305" column="101" lean-forward="false" selection-start-line="305" selection-start-column="101" selection-end-line="305" selection-end-column="101" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <marker date="1491009420000" expanded="true" signature="931:965" ph="select table... user_tables" />
+                <marker date="1491010511000" expanded="true" signature="931:965" ph="select table... user_tables" />
               </folding>
             </state>
           </provider>
@@ -83,11 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="project.sql" pinned="false" current-in-tab="false">
+      <file leaf-file-name="project.sql" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SQLscript/project.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+            <state relative-caret-position="3270">
+              <caret line="218" column="52" lean-forward="false" selection-start-line="218" selection-start-column="52" selection-end-line="218" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -113,7 +114,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FarmerSearch.form" pinned="false" current-in-tab="true">
+      <file leaf-file-name="FarmerSearch.form" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FarmerSearch.form">
           <provider selected="true" editor-type-id="ui-designer">
             <state />
@@ -152,10 +153,10 @@
       <list>
         <option value="$PROJECT_DIR$/src/FarmerSearch.java" />
         <option value="$PROJECT_DIR$/src/BrokerSearch.java" />
-        <option value="$PROJECT_DIR$/SQLscript/project.sql" />
         <option value="$PROJECT_DIR$/src/BrokerSearch.form" />
-        <option value="$PROJECT_DIR$/src/UserInterface.java" />
         <option value="$PROJECT_DIR$/src/FarmerSearch.form" />
+        <option value="$PROJECT_DIR$/src/UserInterface.java" />
+        <option value="$PROJECT_DIR$/SQLscript/project.sql" />
       </list>
     </option>
   </component>
@@ -166,8 +167,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="219" />
-    <option name="y" value="112" />
+    <option name="x" value="432" />
+    <option name="y" value="23" />
     <option name="width" value="1411" />
     <option name="height" value="873" />
   </component>
@@ -457,7 +458,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.FarmerSearch">
+  <component name="RunManager" selected="Application.UserInterface">
     <configuration default="false" name="UserInterface" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="UserInterface" />
@@ -506,6 +507,21 @@
     <configuration default="false" name="Transaction" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="Transaction" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="cpsc304project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="false" name="TransactionSearch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="TransactionSearch" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -905,18 +921,20 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.UserInterface" />
       <item index="1" class="java.lang.String" itemvalue="Application.BrokerSearch" />
       <item index="2" class="java.lang.String" itemvalue="Application.FarmerSearch" />
       <item index="3" class="java.lang.String" itemvalue="Application.Transaction" />
+      <item index="4" class="java.lang.String" itemvalue="Application.TransactionSearch" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Application.FarmerSearch" />
-        <item index="1" class="java.lang.String" itemvalue="Application.BrokerSearch" />
-        <item index="2" class="java.lang.String" itemvalue="Application.UserInterface" />
-        <item index="3" class="java.lang.String" itemvalue="Application.Transaction" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Application.UserInterface" />
+        <item index="1" class="java.lang.String" itemvalue="Application.FarmerSearch" />
+        <item index="2" class="java.lang.String" itemvalue="Application.TransactionSearch" />
+        <item index="3" class="java.lang.String" itemvalue="Application.BrokerSearch" />
+        <item index="4" class="java.lang.String" itemvalue="Application.Transaction" />
       </list>
     </recent_temporary>
   </component>
@@ -1006,14 +1024,22 @@
       <option name="project" value="LOCAL" />
       <updated>1491006202975</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="finish broker panel implementation">
+      <created>1491009609541</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1491009609541</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48969000" />
+    <option name="totallyTimeSpent" value="50226000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="219" y="112" width="1411" height="873" extended-state="0" />
+    <frame x="432" y="23" width="1411" height="873" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1024,19 +1050,19 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32133675" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3200514" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24407253" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2973806" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16583984" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18284905" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18284905" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33247423" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33161953" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1085,7 +1111,8 @@
     <MESSAGE value="revise project.sql" />
     <MESSAGE value="be able to get min and max price of each type of product" />
     <MESSAGE value="finish Farmer Search Panel" />
-    <option name="LAST_COMMIT_MESSAGE" value="finish Farmer Search Panel" />
+    <MESSAGE value="finish broker panel implementation" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish broker panel implementation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1131,7 +1158,7 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <marker date="1491009420000" expanded="true" signature="931:965" ph="select table... user_tables" />
+            <marker date="1491010511000" expanded="true" signature="931:965" ph="select table... user_tables" />
           </folding>
         </state>
       </provider>
@@ -1143,7 +1170,7 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <marker date="1491009420000" expanded="true" signature="931:965" ph="select table... user_tables" />
+            <marker date="1491010511000" expanded="true" signature="931:965" ph="select table... user_tables" />
           </folding>
         </state>
       </provider>
@@ -1220,7 +1247,7 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <marker date="1491009420000" expanded="true" signature="931:965" ph="select table... user_tables" />
+            <marker date="1491010511000" expanded="true" signature="931:965" ph="select table... user_tables" />
           </folding>
         </state>
       </provider>
@@ -1295,7 +1322,7 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <marker date="1491009420000" expanded="true" signature="931:965" ph="select table... user_tables" />
+            <marker date="1491010511000" expanded="true" signature="931:965" ph="select table... user_tables" />
           </folding>
         </state>
       </provider>
@@ -1307,7 +1334,7 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <marker date="1491009420000" expanded="true" signature="931:965" ph="select table... user_tables" />
+            <marker date="1491010511000" expanded="true" signature="931:965" ph="select table... user_tables" />
           </folding>
         </state>
       </provider>
@@ -1319,7 +1346,7 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <marker date="1491009420000" expanded="true" signature="931:965" ph="select table... user_tables" />
+            <marker date="1491010511000" expanded="true" signature="931:965" ph="select table... user_tables" />
           </folding>
         </state>
       </provider>
@@ -1331,7 +1358,7 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <marker date="1491009420000" expanded="true" signature="931:965" ph="select table... user_tables" />
+            <marker date="1491010511000" expanded="true" signature="931:965" ph="select table... user_tables" />
           </folding>
         </state>
       </provider>
@@ -1343,7 +1370,7 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <marker date="1491009420000" expanded="true" signature="931:965" ph="select table... user_tables" />
+            <marker date="1491010511000" expanded="true" signature="931:965" ph="select table... user_tables" />
           </folding>
         </state>
       </provider>
@@ -1355,7 +1382,7 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <marker date="1491009420000" expanded="true" signature="931:965" ph="select table... user_tables" />
+            <marker date="1491010511000" expanded="true" signature="931:965" ph="select table... user_tables" />
           </folding>
         </state>
       </provider>
@@ -1367,7 +1394,7 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <marker date="1491009420000" expanded="true" signature="931:965" ph="select table... user_tables" />
+            <marker date="1491010511000" expanded="true" signature="931:965" ph="select table... user_tables" />
           </folding>
         </state>
       </provider>
@@ -1483,31 +1510,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SQLscript/project.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/BrokerSearch.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="214">
           <caret line="26" column="55" lean-forward="false" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="55" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UserInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2895">
-          <caret line="193" column="17" lean-forward="false" selection-start-line="193" selection-start-column="17" selection-end-line="193" selection-end-column="17" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-            <marker date="1491009420000" expanded="true" signature="931:965" ph="select table... user_tables" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1519,6 +1526,26 @@
     <entry file="file://$PROJECT_DIR$/src/FarmerSearch.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UserInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="305" column="101" lean-forward="false" selection-start-line="305" selection-start-column="101" selection-end-line="305" selection-end-column="101" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <marker date="1491010511000" expanded="true" signature="931:965" ph="select table... user_tables" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SQLscript/project.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3270">
+          <caret line="218" column="52" lean-forward="false" selection-start-line="218" selection-start-column="52" selection-end-line="218" selection-end-column="52" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>

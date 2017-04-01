@@ -31,7 +31,7 @@ Type char(45) null,
 quantity int not null,
 farmer_id int not null,
  foreign key(farmer_id) references farmer);
-
+grant select on product to public;
 
 
 
@@ -65,9 +65,9 @@ transaction_id int not null PRIMARY KEY,
  foreign key (broker_id) references broker,
  foreign key (product_id) references product);
 
-
+grant select on transaction to public;
 -- populate tables--
-
+-- farmer --
 insert into farmer
 values(001, 'Ed Knorr');
 
@@ -77,6 +77,16 @@ values(002, 'Raymond Ng');
 insert into farmer
 values(003, 'Paul Carter');
 
+insert into farmer
+values(004, 'Mary Jane');
+
+insert into farmer
+values(005, 'Hugh Jackman');
+
+insert into farmer
+values(006, 'Emma Stone');
+
+-- farmland --
 insert into farmland
 values(101, 64.1, 001,'BC');
 
@@ -86,111 +96,124 @@ values(102, 29.8, 002, 'BC');
 insert into farmland
 values(103, 10.9, 003, 'QC');
 
-grant select on product to public;
+insert into farmland
+values(104, 52.3, 004, 'AB');
+
+insert into farmland
+values(105, 34.5, 005, 'ON');
+
+insert into farmland
+values(106, 49.9, 006, 'QC');
+
+insert into farmland
+values(107, 11.9, 006, 'AB');
+
+-- product --
+
  insert into product
- values(201, 12.2, 'kg', 'cow',1000,001);
+ values(201, 20, 'kg', 'cow',1000,001);
 
  insert into product
  values(202, 13.1, 'kg', 'chicken',2000,001);
 
 insert into product
-values(203, 123.1, 'kg', 'corn',2000,001);
+values(203, 4.5, 'kg', 'corn',2000,001);
 
 insert into product
-values(204, 123.1, 'kg', 'corn',1500,002);
+values(204, 5, 'kg', 'corn',1500,002);
 
 insert into product
-values(205, 13.1, 'kg', 'chicken',1400,
+values(205, 12.8, 'kg', 'chicken',1400,
+002);
+
+insert into product
+values(206, 13.5, 'kg', 'chicken',38,
 003);
 
+insert into product
+values(207, 18.7, 'kg', 'pig',320,
+003);
 
-insert into animal
-values(201, 9);
+insert into product
+values(208, 19.7, 'kg', 'pig',107,
+004);
 
-insert into animal
-values(202, 10);
+insert into product
+values(209, 3.8, 'kg', 'wheat',700,
+004);
 
-insert into animal
-values(206, 11);
+insert into product
+values(210, 25.3, 'kg', 'lamb',25,
+004);
 
-insert into crop
-values(203, 100);
+insert into product
+values(211, 3.6, 'kg', 'wheat',1000,
+005);
 
-insert into crop
-values(204, 20);
+insert into product
+values(212, 3.9, 'kg', 'wheat',590,
+006);
 
-insert into crop
-values(205, 65);
+insert into product
+values(213, 19.9, 'kg', 'cow',50,
+006);
 
--- insert into broker
--- values(301, 'Jan Manuch');
+insert into product
+values(214, 2.8, 'kg', 'tomato',1300,
+006);
 
--- insert into broker
--- values(302, 'Steve Wolfman');
+insert into product
+values(215, 1.5, 'kg', 'potato',360,
+006);
 
--- insert into broker
--- values(303, 'Patrice Belleville');
+-- broker --
+insert into broker
+values(301, 'Jan Manuch');
+
+insert into broker
+values(302, 'Steve Wolfman');
+
+insert into broker
+values(303, 'Patrice Belleville');
+
+insert into broker
+values(304, 'Alan Hu');
+
+insert into broker
+values(305, 'Luke Skywalker');
 
 -- insert into transaction
--- values(20100, 2010/11/30, 12, 10);
-
+-- values(100001, 2010/11/30, 12, 0, 001, 301, 201);
+--
 -- insert into transaction
--- values(12932, 2017/02/05, 32, 11);
-
+-- values(100002, 2011/02/05, 0, 11, 002, 301, 204);
+--
 -- insert into transaction
--- values(00001, 2015/08/03, 34, 23);
-
--- insert into location
--- values('V6K 1K5', 'Nanaimo', 'British Columbia');
-
--- insert into location
--- values('M5T 2T4', 'Muskoka', 'Ontario');
-
--- insert into location
--- values('T3R 2S7', 'Big Lakes', 'Alberta');
-
--- insert into own
--- values(001, 203);
-
--- insert into own
--- values(002, 204);
-
--- insert into own
--- values(003, 205);
-
--- insert into sell
--- values(20100, 001, 203, 301);
-
--- insert into sell
--- values(12932, 002, 204, 302);
-
--- insert into sell
--- values(00001, 003, 205, 303);
-
--- insert into purchase
--- values(20100, 301);
-
--- insert into purchase
--- values(12932, 302);
-
--- insert into purchase
--- values(00001, 303);
-
--- insert into has
--- values(001, 101);
-
--- insert into has
--- values(002, 102);
-
--- insert into has
--- values(003, 103);
-
--- insert into isin
--- values('V6K 1K5', 101);
-
--- insert into isin
--- values('M5T 2T4' ,102);
-
--- insert into isin
--- values('T3R 2S7', 103);
-
+-- values(100003, 2011/08/03, 34, 0, 002, 302, 205);
+--
+-- insert into transaction
+-- values(100004, 2011/10/30, 0, 10, 001, 302, 203);
+--
+-- insert into transaction
+-- values(100005, 2012/02/03, 100, 0, 004, 304, 208);
+--
+-- insert into transaction
+-- values(100006, 2012/04/23, 60, 0, 003, 303, 206);
+--
+-- insert into transaction
+-- values(100007, 2013/04/23, 0, 400, 004, 305, 209);
+--
+-- insert into transaction
+-- values(100008, 2013/08/23, 0, 50, 005, 303, 211);
+--
+-- insert into transaction
+-- values(100009, 2014/12/23, 43, 0, 006, 305, 213);
+--
+-- insert into transaction
+-- values(100010, 2014/12/30, 43, 0, 002, 304, 205);
+--
+-- insert into transaction
+-- values(100011, 2015/02/23, 0, 22, 006, 302, 214);
+--
+-- insert into transaction
+-- values(100012, 2015/12/20, 43, 0, 001, 302, 202);
