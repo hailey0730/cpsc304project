@@ -49,9 +49,6 @@ public class UserInterface {
             statement.append(tableName);
 
             Statement stmt = con.createStatement();
-
-//            stmt.executeQuery("insert into farmer\n" +
-//                    "values(001, 'Ed Knorr')");
             ResultSet rs = stmt.executeQuery(statement.toString());
             printFarmerCol(rs);
 
@@ -81,7 +78,7 @@ public class UserInterface {
     //(1 point) Aggregation query: pick one query that requires the use of aggregation
     // (min, max, average, or count are all fine).
     // with input province, get total number of farmers in the given province
-    public void getNumOfFarmer(String province) {
+    public String getNumOfFarmer(String province) {
         try {
             char[] ch = province.toCharArray();
             StringBuffer statement = new StringBuffer("select count(*) from farmland where province = '");
@@ -95,13 +92,15 @@ public class UserInterface {
             rs.next();
             int count = rs.getInt( 1);
             //System.out.println("There are " + count + " farmers in " + province);
-
+            String number = "There are " + count + " farmers in " + province + ".";
+            return number;
         }catch (SQLException e) {
             e.printStackTrace();
+            return ("Error:" + e);
         }
     }
 
-    public void getNamesOfFramersIn(String province) {
+    public String getNamesOfFramersIn(String province) {
         try {
             char[] ch = province.toCharArray();
             StringBuffer statement = new StringBuffer("select farmer.name from farmland, farmer where farmer.farmer_id = farmland.farmer_id and province = '");
@@ -112,14 +111,16 @@ public class UserInterface {
             System.out.println(statement.toString());
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(statement.toString());
+            String print = "Their names are:";
             while (rs.next()){
-                String name = rs.getString( 1);
+                String name = rs.getString( 1).trim();
                 System.out.println(name);
+                print += " " + name;
             }
-
-
+            return print;
         }catch (SQLException e) {
-            e.printStackTrace();
+            String print = "Error "+ e;
+            return print;
         }
     }
 
@@ -138,28 +139,11 @@ public class UserInterface {
                 String name = rs.getString( 1);
                 System.out.println(name);
             }
-
-
-
         }catch (SQLException e) {
             e.printStackTrace();
         }
     }
-    public ResultSet searchByProvince() {
-        try {
-            Statement stmt = con.createStatement();
-            StringBuffer statement = new StringBuffer("select distinct province from farmland");
-            ResultSet rs = stmt.executeQuery(statement.toString());
-            while (rs.next()) {
-                System.out.println(rs.getString(1));
-            }
-            return rs;
-        }catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
 
-    }
 
     public ResultSet searchByFarmer() {
         try {
@@ -174,6 +158,37 @@ public class UserInterface {
         }catch (SQLException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+    public String getNamesWith(String province, String product) {
+        try {
+            char[] pv = province.toCharArray();
+            StringBuffer statement = new StringBuffer("select farmer.name,product.quantity from farmer, product, farmland where farmland.province = '");
+            for (int i = 0; i < pv.length; i++) {
+                statement.append(pv[i]);
+            }
+            statement.append("'");
+            statement.append(" and farmer.farmer_id = product.farmer_id and farmland.farmer_id = product.farmer_id and product.type = '");
+            char[] pd = product.toCharArray();
+            for (int i = 0; i < pd.length; i++) {
+                statement.append(pd[i]);
+            }
+            statement.append("'");
+            System.out.println(statement.toString());
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(statement.toString());
+            String print="";
+            while (rs.next()) {
+                String name = rs.getString(1).trim();
+                int count = rs.getInt( 2);
+                print += "Farmer " + name + " in " + province + " owns " + count + " " + product + "s." + '\n';
+            }
+
+            //System.out.println("There are " + count + " farmers in " + province);
+            return print;
+        }catch (SQLException e) {
+            e.printStackTrace();
+            return ("Error:" + e);
         }
     }
 
@@ -204,9 +219,44 @@ public class UserInterface {
             }
         }
     }
+    public String getProduct(String product) {
+        try {
+            char[] ch = product.toCharArray();
+            StringBuffer statement = new StringBuffer("select * from product where type = '");
+            for (int i = 0; i < ch.length; i++) {
+                statement.append(ch[i]);
+            }
+            statement.append("'");
+            System.out.println(statement.toString());
+            ResultSet rs = stmt.executeQuery(statement.toString());
+            String print = "Type Product ID  Price Amount FarmerId" + '\n';
+            while (rs.next()){
+                int id= rs.getInt( 1);
+                float price = rs.getFloat(2);
+                int amount = rs.getInt(5);
+                int fid = rs.getInt(6);
 
-    public String farmerUISearch(String province, String productID){
-        return "results here thanks: " + province + "  " + productID;
+                print += product + "     " +id + "      " + price + "   " + amount + "     " + fid + '\n';
+            }
+            return print;
+        }catch (SQLException e) {
+            String print = "Error "+ e;
+            return print;
+        }
+    }
+
+
+    public String farmerUISearch(String province, String product){
+        if (province.isEmpty() && product.isEmpty()) {
+            return "Error: Empty Input!";
+        } else if ((!province.isEmpty()) && product.isEmpty()){
+            return this.getNumOfFarmer(province) + '\n' + this.getNamesOfFramersIn(province);
+        } else if (province.isEmpty() && (!product.isEmpty())) {
+            return this.getProduct(product);
+        } else{
+            return this.getNamesWith(province,product);
+        }
+
     }
     public String brokerUISearch(String province, String productID, String price, Boolean max){
         //max is the result of max... if it is selected it maxMin is true, else it is false
@@ -222,15 +272,15 @@ public class UserInterface {
     public static void main(String[]args){
         UserInterface ui = new UserInterface();
 
-        // get all columns in table farmer
-
         // get the # of farmers in BC
-        ui.getNumOfFarmer("BC");
-        ui.getNamesOfFramersIn("BC");
+        System.out.println(ui.getNumOfFarmer("BC"));
+        System.out.println(ui.getNamesOfFramersIn("BC"));
+        System.out.println(ui.getNamesWith("BC","corn"));
+        System.out.println(ui.getProduct("cow"));
         ui.getNamesOfFarmerOwnProduct("cow");
-        ui.searchByProvince();
         ui.searchByFarmer();
         ui.getMinMaxPrince(true);
+
 
     }
 }
