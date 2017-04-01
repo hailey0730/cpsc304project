@@ -302,8 +302,8 @@ public class UserInterface {
     public String transactionUICreate(String area, String farmName, String productID, String productUnits){
         return "results here thanks: " + area + "  " + farmName + "  " + productID + " " + productUnits;
     }
-    public String transactionUISearch(String farmerID, String brokerID, String productID, String productUnits){
-        return "results here thanks: " + farmerID + "  " + brokerID + " " + productID + " " + productUnits;
+    public String transactionUISearch(String farmerID, String productID){
+        return "results here thanks: " + farmerID + "  " + " " + productID ;
     }
 
     public static void main(String[]args){
