@@ -375,6 +375,20 @@ public class UserInterface {
         }
     }
 
+    public int getNewTID(){
+        try {
+
+            StringBuffer statement = new StringBuffer("select last(transaction_id) from transaction");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(statement.toString());
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
     public String createTransaction(String farmerID, String brokerID, String productName, String units){
 
         try{
@@ -391,13 +405,14 @@ public class UserInterface {
             int product_id = this.getProductID(farmerID, productName);
             String type = this.getProductTypeAnimal(product_id);
             String finalType;
+            int transaction_id = this.getNewTID();
             if(type == "Error!"){
                 finalType = "crop";
             } else {
                 finalType = "animal";
             }
             StringBuffer statement = new StringBuffer("insert into transaction values (");
-            //statement.append();
+            statement.append(transaction_id);
             statement.append(",");
             LocalDate localDate = LocalDate.now();
             statement.append(localDate);
