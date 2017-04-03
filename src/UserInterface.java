@@ -2,13 +2,11 @@
  * Created by user on 3/24/2017.
  */
 
-import oracle.sql.CHAR;
 
-import javax.swing.plaf.nimbus.State;
-import java.io.*;
+
 import java.lang.String;
 import java.sql.*;
-import java.util.Scanner;
+
 import java.time.LocalDate;
 
 public class UserInterface {
@@ -185,19 +183,16 @@ public class UserInterface {
             System.out.println(statement.toString());
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(statement.toString());
-            String print="";
-            if (!rs.next()) {
-                print = "There is no " + product + " in " + province + ".";
-            } else {
-                while (rs.next()) {
-                    String name = rs.getString(1).trim();
-                    int count = rs.getInt( 2);
-                    print += "Farmer " + name + " in " + province + " owns " + count + " " + product + "s." + '\n';
-                }
+            String print="Error: There is no " +  product + " in " + province;
+
+            while (rs.next()) {
+                print="";
+                String name = rs.getString(1).trim();
+                int count = rs.getInt( 2);
+                print += "Farmer " + name + " in " + province + " owns " + count + " " + product + "s." + '\n';
             }
 
 
-            //System.out.println("There are " + count + " farmers in " + province);
             return print;
         }catch (SQLException e) {
             e.printStackTrace();
@@ -212,7 +207,7 @@ public class UserInterface {
                 ResultSet rs = stmt.executeQuery(statement.toString());
                 String print="";
                 while (rs.next()) {
-                    print += "The min price of " + rs.getString(1).trim() + " is " + rs.getInt(2)+ '\n';
+                    print += "The min price of " + rs.getString(1).trim() + " is " + rs.getFloat(2)+ '\n';
                 }
                 return print;
             }catch (SQLException e) {
@@ -226,7 +221,7 @@ public class UserInterface {
                 String print="";
 
                 while (rs.next()) {
-                    print += "The max price of " + rs.getString(1).trim() + " is " + rs.getInt(2) + '\n';
+                    print += "The max price of " + rs.getString(1).trim() + " is " + rs.getFloat(2) + '\n';
                 }
                 return print;
             }catch (SQLException e) {
@@ -248,17 +243,26 @@ public class UserInterface {
             String print = "";
             if (!rs.next()) {
                 print = "There is no product " + product + " in the database.";
-            } else {
+            }else {
                 print = "Type Product ID  Price Amount FarmerId" + '\n';
+                int id= rs.getInt( 1);
+                float price = rs.getFloat(2);
+                int amount = rs.getInt(5);
+                int fid = rs.getInt(6);
+                print += product + "     " +id + "      " + price + "    " + amount + "       " + fid + '\n';
                 while (rs.next()){
-                    int id= rs.getInt( 1);
-                    float price = rs.getFloat(2);
-                    int amount = rs.getInt(5);
-                    int fid = rs.getInt(6);
+                    id= rs.getInt( 1);
+                    price = rs.getFloat(2);
+                    amount = rs.getInt(5);
+                    fid = rs.getInt(6);
 
-                    print += product + "     " +id + "      " + price + "   " + amount + "     " + fid + '\n';
+                    print += product + "     " +id + "      " + price + "    " + amount + "       " + fid + '\n';
                 }
+
             }
+
+
+
 
             return print;
         }catch (SQLException e) {
@@ -306,37 +310,41 @@ public class UserInterface {
         }
     }
 
-    public ResultSet getProductInfo(int productID) {
-        try {
-            String statement = new String("select quantity from product where product_id = " + productID);
-            Statement stmt = con.createStatement();
-            //String state = "select * from product";
-            ResultSet rs = stmt.executeQuery(statement);
-            rs.next();
-            return rs;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+//    public ResultSet getProductInfo(int productID) {
+//        try {
+//            String statement = new String("select quantity from product where product_id = " + productID);
+//            Statement stmt = con.createStatement();
+//            //String state = "select * from product";
+//            ResultSet rs = stmt.executeQuery(statement);
+//            rs.next();
+//            return rs;
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
 
-    public ResultSet updateProductAmount(int productID, int amount) {
+    public String updateProductAmount(int productID, int amount) {
 
             try {
-                ResultSet productInfo = this.getProductInfo(productID);
+                StringBuffer statement = new StringBuffer("SELECT product.* from product where product_ID =");
+                statement.append(productID);
+                statement.append(" FOR UPDATE");
+                System.out.println(statement.toString());
+                ResultSet rs = stmt.executeQuery(statement.toString());
+                int quantity=0;
+                int new_quantity=0;
+                if (rs.next()) {
+                    quantity = rs.getInt(5);
+                    new_quantity = quantity - amount;
+                    rs.updateInt(5,new_quantity);
+                }
+                String print="The Amount of " + productID + "was updated from " + quantity + " to " + new_quantity;
+                return print;
 
-                int newAmount = productInfo.getInt(1) + amount;
-                StringBuffer statement = new StringBuffer("UPDATE product set quantity = ");
-                statement.append(newAmount);
-                statement.append("where product_id = " + productID);
-                Statement stmt = con.createStatement();
-                stmt.executeUpdate(statement.toString());
-                ResultSet rs = this.getProductInfo(productID);
-                rs.next();
-                return rs;
             } catch (SQLException e) {
                 e.printStackTrace();
-                return null;
+                return "Invalid operation for read only resultset: updateInt";
             }
 
     }
@@ -360,12 +368,13 @@ public class UserInterface {
     public int getProductID(String farmerID, String productName){
         try {
 
-            StringBuffer statement = new StringBuffer("select from product where farmer_id = ");
+            StringBuffer statement = new StringBuffer("select product_id from product where farmer_id = ");
             statement.append(farmerID);
-            statement.append("and type = ' ");
+            statement.append(" and type = '");
             statement.append(productName);
             statement.append("'");
             Statement stmt = con.createStatement();
+            System.out.println(statement.toString());
             ResultSet rs = stmt.executeQuery(statement.toString());
             rs.next();
             return rs.getInt(1);
@@ -378,11 +387,11 @@ public class UserInterface {
     public int getNewTID(){
         try {
 
-            StringBuffer statement = new StringBuffer("select last(transaction_id) from transaction");
+            StringBuffer statement = new StringBuffer("select max(transaction_id) from transaction");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(statement.toString());
             rs.next();
-            return rs.getInt(1);
+            return rs.getInt(1) + 1;
         } catch (SQLException e) {
             e.printStackTrace();
             return 0;
@@ -392,63 +401,36 @@ public class UserInterface {
     public String createTransaction(String farmerID, String brokerID, String productName, String units){
 
         try{
-            //INSERT INTO table_name
-            //VALUES (value1, value2, value3, ...);
-            //transaction_id int not null PRIMARY KEY,
-            //trans_date date,
-            //animalNumber int not null,
-            //cropNumber int not null,
-            //farmer_id int not null,
-            //broker_id int not null,
-            //product_id int not null,
-
             int product_id = this.getProductID(farmerID, productName);
             String type = this.getProductTypeAnimal(product_id);
             String finalType;
             int transaction_id = this.getNewTID();
-            if(type == "Error!"){
-                finalType = "crop";
-            } else {
-                finalType = "animal";
-            }
             StringBuffer statement = new StringBuffer("insert into transaction values (");
             statement.append(transaction_id);
             statement.append(",");
             LocalDate localDate = LocalDate.now();
             statement.append(localDate);
             statement.append(",");
-            if(finalType == "animal"){
-                statement.append(units);
-                statement.append(", 0 ,");
-                statement.append(farmerID);
-                statement.append(",");
-                statement.append(brokerID);
-                statement.append(",");
-                statement.append(product_id);
-                statement.append(")");
-                Statement stmt = con.createStatement();
-                stmt.executeUpdate(statement.toString());
+            statement.append(units);
+            statement.append(",");
+            statement.append(farmerID);
+            statement.append(",");
+            statement.append(brokerID);
+            statement.append(",");
+            statement.append(product_id);
+            statement.append(")");
+            System.out.println(statement.toString());
+            stmt.executeQuery(statement.toString());
 
 
-            } else {
-                statement.append(", 0 ,");
-                statement.append(units);
-                statement.append(",");
-                statement.append(farmerID);
-                statement.append(",");
-                statement.append(brokerID);
-                statement.append(",");
-                statement.append(product_id);
-                statement.append(")");
-                Statement stmt = con.createStatement();
-                stmt.executeUpdate(statement.toString());
-            }
-            this.updateProductAmount(product_id, Integer.parseInt(units));
-
-            return "Transaction has been added.";
+            String print = "Transaction has been added." + '\n';
+            print += "Transaction_id: " +transaction_id + " DATE: " + localDate + " Amount: " + units + " BrokerID: " + brokerID
+                    + " FarmerID: " + farmerID + " ProductID " + product_id;
+            print += this.updateProductAmount(product_id, Integer.parseInt(units));
+            return  print ;
         } catch (SQLException e){
             e.printStackTrace();
-            return "Error: " + e;
+            return "Error: Transaction is declined" + e;
         }
     }
 
@@ -482,7 +464,7 @@ public class UserInterface {
                 return this.getNamesWith(province,product);
             }
         } else {
-            return "Error: Don't check both!";
+            return "";
         }
 
     }
@@ -517,12 +499,13 @@ public class UserInterface {
 
     public static void main(String[]args){
         UserInterface ui = new UserInterface();
-
-        System.out.println(ui.getNumOfFarmer("AB"));
-        System.out.println(ui.getNamesOfFramersIn("AB"));
-        System.out.println(ui.getNamesWith("BC","corn"));
-        System.out.println(ui.getProduct("cow"));
+//        System.out.println(ui.getNamesWith("BC","cow"));
+//        System.out.println(ui.getNamesOfFramersIn("AB"));
+//        System.out.println(ui.getProduct("cow"));
+        System.out.println(ui.getMinMaxPrince(true));
         System.out.println(ui.getMinMaxPrince(false));
+        System.out.println(ui.getProductID("1","corn"));
+//        System.out.println(ui.createTransaction("1","301","cow","200"));
 
     }
 }

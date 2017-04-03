@@ -24,6 +24,10 @@ public class BrokerSearch {
                 UserInterface myInterface = new UserInterface();
                 Boolean checkMax = max.isSelected();
                 Boolean checkMin = min.isSelected();
+                String text =myInterface.brokerUISearch(province.getText(), product.getText(), checkMax, checkMin);
+                if (text == "") {
+                    JOptionPane.showMessageDialog(null,"Error! Please check ONE checkbox!");
+                }
                 results.setText(myInterface.brokerUISearch(province.getText(), product.getText(), checkMax, checkMin));
 
             }
